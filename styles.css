@@ -13,3 +13,11 @@ body {
   display: block;
   margin: 0 auto;
 }
+.logo{
+  width: 150px;
+}
+.logoText{
+  color: #C950A9 ;
+  font-size: 22px;
+  font-weight: bolder;
+}
