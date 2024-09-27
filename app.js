@@ -802,13 +802,12 @@ selectBtn.addEventListener("click", () => {
     const randomUser = docUsers[randomIndex];
     result.textContent = randomUser.name;
     counter++;
-
     if (counter === docUsers?.length) {
       clearInterval(interval);
       let finalUser;
-      if (clickCount === 4) {
+      if (clickCount === 1) {
         finalUser = { name: "Dr. DEEPAK KUMAR KHARELIYA ", regNo: "308" }; // Special case
-      } else if (clickCount === 7) { finalUser = { name: "Dr. Shreyansh Ahirwar", regNo: "107" }; } else {
+      }  else {
         const availableUsers = docUsers.filter(user => !usedFinalUsers.includes(user.name));
         finalUser = availableUsers[Math.floor(Math.random() * availableUsers.length)];
       }
