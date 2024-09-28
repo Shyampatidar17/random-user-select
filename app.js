@@ -783,11 +783,8 @@ const messageContainer = document.getElementById("message-container");
 // Remove users array
 let usedFinalUsers = JSON.parse(sessionStorage.getItem("usedFinalUsers")) || [];
 let clickCount = parseInt(sessionStorage.getItem("clickCount")) || 0;
-// let usedFinalUsers = JSON.parse(localStorage.getItem("usedFinalUsers")) || [];
-// let clickCount = parseInt(localStorage.getItem("clickCount")) || 0;
 
 selectBtn.addEventListener("click", () => {
-  // Remove previous message if it exists
   if (messageContainer.firstChild) {
     messageContainer.removeChild(messageContainer.firstChild);
   }
@@ -795,8 +792,6 @@ selectBtn.addEventListener("click", () => {
   let counter = 0;
   clickCount++;
   sessionStorage.setItem("clickCount", clickCount);
-  // localStorage.setItem("clickCount", clickCount);
-
   const interval = setInterval(() => {
     const randomIndex = Math.floor(Math.random() * docUsers.length);
     const randomUser = docUsers[randomIndex];
@@ -805,14 +800,9 @@ selectBtn.addEventListener("click", () => {
     if (counter === docUsers?.length) {
       clearInterval(interval);
       let finalUser;
-      if (clickCount === 1) {
-        finalUser = { name: "Dr. DEEPAK KUMAR KHARELIYA ", regNo: "308" }; // Special case
-      }  else {
         const availableUsers = docUsers.filter(user => !usedFinalUsers.includes(user.name));
         finalUser = availableUsers[Math.floor(Math.random() * availableUsers.length)];
-      }
       usedFinalUsers.push(finalUser.name);
-      // localStorage.setItem("usedFinalUsers", JSON.stringify(usedFinalUsers));
       sessionStorage.setItem("usedFinalUsers", JSON.stringify(usedFinalUsers));
 
       // Display final user with regNo
@@ -843,10 +833,9 @@ function updateTime() {
   };
 
   // Format the date and time as dd-mm-yy hh:mm AM/PM
-  const formattedDateTime = now.toLocaleString('en-GB', options).replace(',', ''); // 'en-GB' for dd/mm/yyyy format
-  document.getElementById('currentTime').innerText = formattedDateTime.replace(/\//g, '-'); // Repla ce slashes with dashes
+  const formattedDateTime = now.toLocaleString('en-GB', options).replace(',', ''); 
+  document.getElementById('currentTime').innerText = formattedDateTime.replace(/\//g, '-'); 
 }
 
-setInterval(updateTime, 1000); // Update time every second
-updateTime(); // Initial call to display time immediately
-
+setInterval(updateTime, 1000);
+updateTime(); 
