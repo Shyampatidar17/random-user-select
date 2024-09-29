@@ -800,12 +800,10 @@ selectBtn.addEventListener("click", () => {
     if (counter === docUsers?.length) {
       clearInterval(interval);
       let finalUser;
-      if (clickCount === 1) {
-        finalUser = { name: "Dr. Shreyansh Ahirwar", regNo: "107" }; // Special case
-      }  else {
+      
         const availableUsers = docUsers.filter(user => !usedFinalUsers.includes(user.name));
         finalUser = availableUsers[Math.floor(Math.random() * availableUsers.length)];
-      }
+      
       usedFinalUsers.push(finalUser.name);
       sessionStorage.setItem("usedFinalUsers", JSON.stringify(usedFinalUsers));
 
